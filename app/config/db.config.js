@@ -19,5 +19,6 @@ db.sequelize = sequelize;
 
 
 db.depto = require('../models/depto.js')(sequelize, Sequelize); 
+db.empleados = require('../models/depto.js')(sequelize, Sequelize); 
 
 module.exports = db;

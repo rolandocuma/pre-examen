@@ -1,4 +1,4 @@
-const db = require('../config/db.config.js'); // Asegúrate de que la ruta sea correcta
+const db = require('../config/db.config.js'); 
 const Depto = db.depto;
 
 exports.create = (req, res) => {
