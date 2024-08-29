@@ -1,24 +1,30 @@
-const env = require('./env.js'); 
-const Sequelize = require('sequelize');
+const env = require('./env.js');
+const Sequelize = require('sequelize'); 
+const { pool } = env; 
 
 const sequelize = new Sequelize(env.database, env.username, env.password, {
-  host: env.host,
-  dialect: env.dialect, 
-  dialectOptions: {
-    ssl: {
-      require: env.ssl, 
-      rejectUnauthorized: false
+    host: env.host,
+    dialect: env.dialect,
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
+    },
+    operatorAliases: false, 
+    pool: {
+        max: env.pool.max,
+        min: env.pool.min,
+        acquire: env.pool.acquire,
+        idle: env.pool.idle,
     }
-  },
-  pool: env.pool 
 });
 
 const db = {};
 db.Sequelize = Sequelize;
-db.sequelize = sequelize;
+db.sequelize = sequelize; 
 
-
-db.depto = require('../models/depto.js')(sequelize, Sequelize); 
-db.empleados = require('../models/depto.js')(sequelize, Sequelize); 
+db.Empleado = require('../models/empleados.js')(sequelize, Sequelize);
+db.Depto = require('../models/departamento.js')(sequelize, Sequelize);
 
 module.exports = db;

@@ -1,18 +1,11 @@
-const db = require('./app/config/db.config.js'); 
 const express = require('express');
-const cors = require('cors');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+const db = require('./app/config/db.config.js');
+const empleadoRouter = require('./app/routers/router.js');
+const departamentoRouter = require('./app/routers/router.js');
 
 const app = express();
-
-
-db.sequelize.sync()
-  .then(() => {
-    console.log('Database synchronized without dropping tables');
-  })
-  .catch(error => {
-    console.error('Error synchronizing the database:', error);
-  });
 
 const corsOptions = {
   origin: 'http://localhost:4200',
@@ -22,16 +15,18 @@ app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 
-const deptoRouter = require('./app/routes/router.js');
-
-app.use('/', deptoRouter);
-
-app.get("/", (req, res) => {
-  res.json({ message: "Bienvenido Estudiantes de UMG" });
+db.sequelize.sync({ force: false }).then(() => {
+  console.log('Resync with { force: false }');
 });
 
-const PORT = process.env.PORT || 3000;
-const server = app.listen(PORT, '0.0.0.0', function () {
+app.use('/', empleadoRouter); 
+app.use('/', departamentoRouter);
+
+app.get("/", (req, res) => {
+  res.json({ message: "Bienvenidos UMG" });
+});
+
+const server = app.listen(3000, function () {
   let host = server.address().address;
   let port = server.address().port;
   console.log("App listening at http://%s:%s", host, port);
