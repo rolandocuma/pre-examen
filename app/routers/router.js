@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const departamentoController = require('../controllers/depto.controller.js');
-const empleadoController = require('../controllers/empleado.controller.js');
-const clienteController = require('../controllers/cliente.controller.js');
-const proveedorController = require('../controllers/proveedor.controller.js');
-const productoController = require('../controllers/producto.controller.js');
-const facturaController = require('../controllers/factura.controller.js');
-const FDetalleController = require('../controllers/Fdetalle.controller.js');
+const departamentoController = require('../controllers/deptocontroller.js');
+const empleadoController = require('../controllers/empleadocontroller.js');
+const clienteController = require('../controllers/clientecontroller.js');
+const proveedorController = require('../controllers/proveedorcontroller.js');
+const productoController = require('../controllers/productocontroller.js');
+const facturaController = require('../controllers/facturacontroller.js');
+const FDetalleController = require('../controllers/Fdetallecontroller.js');
 
 router.post('/api/departamentos/create', departamentoController.create);
 router.get('/api/departamentos/all', departamentoController.retrieveAllDepartamentos);
