@@ -26,5 +26,10 @@ db.sequelize = sequelize;
 
 db.Empleado = require('../models/empleados.js')(sequelize, Sequelize);
 db.Depto = require('../models/departamento.js')(sequelize, Sequelize);
+db.Cliente = require('../models/cliente.js')(sequelize, Sequelize);
+db.Proveedor = require ('../models/proveedor.js')(sequelize, Sequelize);
+db.Producto = require ('../models/producto.js')(sequelize, Sequelize);
+db.Factura = require ('../models/factura.js')(sequelize, Sequelize);
+db.Factura = require ('../models/Fdetalle.js')(sequelize, Sequelize);
 
 module.exports = db;
