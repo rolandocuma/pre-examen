@@ -15,7 +15,7 @@ exports.create = (req, res) => {
 
         Empleado.create(empleado).then(result => {
             res.status(200).json({
-                message: "Empleado creado exitosamente con id = " + result.id_emp,
+                message: "se creó empleado  con id = " + result.id_emp,
                 empleado: result,
             });
         });
@@ -31,7 +31,7 @@ exports.retrieveAllEmpleados = (req, res) => {
     Empleado.findAll()
         .then(empleadoInfos => {
             res.status(200).json({
-                message: "¡Empleados obtenidos exitosamente!",
+                message: "empleados obtenidos con exito",
                 empleados: empleadoInfos
             });
         })
@@ -49,7 +49,7 @@ exports.getEmpleadoById = (req, res) => {
     Empleado.findByPk(empleadoId)
         .then(empleado => {
             res.status(200).json({
-                message: "Empleado obtenido exitosamente con id = " + empleadoId,
+                message: "se obtuvo empleado con id = " + empleadoId,
                 empleado: empleado
             });
         })
@@ -93,7 +93,7 @@ exports.updateById = async (req, res) => {
             };
 
             res.status(200).json({
-                message: "Actualización exitosa de un empleado con id = " + empleadoId,
+                message: "se actualizó empleado con id = " + empleadoId,
                 empleado: updatedObject,
             });
         }
@@ -118,7 +118,7 @@ exports.deleteById = async (req, res) => {
         } else {
             await empleado.destroy();
             res.status(200).json({
-                message: "Eliminación exitosa del empleado con id = " + empleadoId,
+                message: "se eliminó empleado con id = " + empleadoId,
                 empleado: empleado,
             });
         }

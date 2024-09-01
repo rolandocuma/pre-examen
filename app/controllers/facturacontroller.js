@@ -13,7 +13,7 @@ exports.create = (req, res) => {
 
         Factura.create(factura).then(result => {
             res.status(200).json({
-                message: "Factura creada exitosamente con id = " + result.id_factura,
+                message: "Factura creada  con id = " + result.id_factura,
                 factura: result,
             });
         });
@@ -47,7 +47,7 @@ exports.getFacturaById = (req, res) => {
     Factura.findByPk(facturaId)
         .then(factura => {
             res.status(200).json({
-                message: "Factura obtenida exitosamente con id = " + facturaId,
+                message: "Factura obtenida con id = " + facturaId,
                 factura: factura
             });
         })
@@ -89,7 +89,7 @@ exports.updateById = async (req, res) => {
             }
 
             res.status(200).json({
-                message: "Actualización exitosa de una factura con id = " + facturaId,
+                message: "Actualización de factura con id = " + facturaId,
                 factura: updatedObject,
             });
         }
@@ -114,7 +114,7 @@ exports.deleteById = async (req, res) => {
         } else {
             await factura.destroy();
             res.status(200).json({
-                message: "Eliminación exitosa de la factura con id = " + facturaId,
+                message: "Eliminación de la factura con id = " + facturaId,
                 factura: factura,
             });
         }

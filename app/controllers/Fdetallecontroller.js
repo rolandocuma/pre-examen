@@ -12,7 +12,7 @@ exports.create = (req, res) => {
 
         Fdetalle.create(detalle).then(result => {
             res.status(200).json({
-                message: "Detalle de factura creado exitosamente con id_factura = " + result.id_factura + " y id_linea = " + result.id_linea,
+                message: "detalle de factura registrado con id_factura = " + result.id_factura + " y id_linea = " + result.id_linea,
                 detalle: result,
             });
         });
@@ -28,7 +28,7 @@ exports.retrieveAllDetalles = (req, res) => {
     Fdetalle.findAll()
         .then(detalleInfos => {
             res.status(200).json({
-                message: "¡Detalles de facturas obtenidos exitosamente!",
+                message: "Detalles de facturas obtenidos exitosamente",
                 detalles: detalleInfos
             });
         })
@@ -47,7 +47,7 @@ exports.getDetalleById = (req, res) => {
     Fdetalle.findOne({ where: { id_factura: facturaId, id_linea: lineaId } })
         .then(detalle => {
             res.status(200).json({
-                message: "Detalle de factura obtenido exitosamente con id_factura = " + facturaId + " y id_linea = " + lineaId,
+                message: "Detalle de factura obtenido  con id_factura = " + facturaId + " y id_linea = " + lineaId,
                 detalle: detalle
             });
         })
@@ -114,7 +114,7 @@ exports.deleteById = async (req, res) => {
         } else {
             await detalle.destroy();
             res.status(200).json({
-                message: "Eliminación exitosa del detalle de factura con id_factura = " + facturaId + " y id_linea = " + lineaId,
+                message: "Se eliminó detalle de factura con id_factura = " + facturaId + " y id_linea = " + lineaId,
                 detalle: detalle,
             });
         }

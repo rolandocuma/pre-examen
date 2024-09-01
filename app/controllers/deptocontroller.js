@@ -9,7 +9,7 @@ exports.create = (req, res) => {
 
         Depto.create(departamento).then(result => {
             res.status(200).json({
-                message: "Departamento creado exitosamente con id = " + result.id_depto,
+                message: "department created succesfully with id = " + result.id_depto,
                 departamento: result,
             });
         });
@@ -25,7 +25,7 @@ exports.retrieveAllDepartamentos = (req, res) => {
     Depto.findAll()
         .then(departamentoInfos => {
             res.status(200).json({
-                message: "¡Departamentos obtenidos exitosamente!",
+                message: "departments succesufully obtained",
                 departamentos: departamentoInfos
             });
         })
@@ -43,7 +43,7 @@ exports.getDepartamentoById = (req, res) => {
     Depto.findByPk(departamentoId)
         .then(departamento => {
             res.status(200).json({
-                message: "Departamento obtenido exitosamente con id = " + departamentoId,
+                message: "obtenido succesufully con id = " + departamentoId,
                 departamento: departamento
             });
         })
@@ -81,7 +81,7 @@ exports.updateById = async (req, res) => {
             };
 
             res.status(200).json({
-                message: "Actualización exitosa de un departamento con id = " + departamentoId,
+                message: "Se actualizó el departamento con id = " + departamentoId,
                 departamento: updatedObject,
             });
         }
@@ -106,7 +106,7 @@ exports.deleteById = async (req, res) => {
         } else {
             await departamento.destroy();
             res.status(200).json({
-                message: "Eliminación exitosa del departamento con id = " + departamentoId,
+                message: "Se eliminó el departamento con id = " + departamentoId,
                 departamento: departamento,
             });
         }

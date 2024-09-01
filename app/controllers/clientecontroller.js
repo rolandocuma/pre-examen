@@ -19,7 +19,7 @@ exports.create = (req, res) => {
 
         Cliente.create(cliente).then(result => {
             res.status(200).json({
-                message: "Cliente creado exitosamente con id = " + result.id_cliente,
+                message: "Se registró cliente con exito id = " + result.id_cliente,
                 cliente: result,
             });
         });
@@ -36,7 +36,7 @@ exports.retrieveAllClientes = (req, res) => {
     Cliente.findAll()
         .then(clienteInfos => {
             res.status(200).json({
-                message: "¡Clientes obtenidos exitosamente!",
+                message: "Clientes obtenidos exitosamente",
                 clientes: clienteInfos
             });
         })
@@ -55,7 +55,7 @@ exports.getClienteById = (req, res) => {
     Cliente.findByPk(clienteId)
         .then(cliente => {
             res.status(200).json({
-                message: "Cliente obtenido exitosamente con id = " + clienteId,
+                message: "Cliente obtenido exitosamente id = " + clienteId,
                 cliente: cliente
             });
         })
@@ -102,7 +102,7 @@ exports.updateById = async (req, res) => {
             }
 
             res.status(200).json({
-                message: "Actualización exitosa de un cliente con id = " + clienteId,
+                message: "Actualización exitosa del id = " + clienteId,
                 cliente: updatedObject,
             });
         }
@@ -128,7 +128,7 @@ exports.deleteById = async (req, res) => {
         } else {
             await cliente.destroy();
             res.status(200).json({
-                message: "Eliminación exitosa del cliente con id = " + clienteId,
+                message: "Cliente eliminado de id = " + clienteId,
                 cliente: cliente,
             });
         }
