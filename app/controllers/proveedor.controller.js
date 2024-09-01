@@ -32,7 +32,7 @@ exports.create = (req, res) => {
     }
 };
 
-// Obtener todos los proveedores
+
 exports.retrieveAllProveedores = (req, res) => {
     Proveedor.findAll()
         .then(proveedorInfos => {
